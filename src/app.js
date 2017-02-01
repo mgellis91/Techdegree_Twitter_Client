@@ -41,10 +41,6 @@ function getTwitterData () {
   twitter.getUserTimeline({id: config.twitterId, count: twitter.timelineCount}, error, twitterTimelineSuccess);
 }
 
-function formatDateAndTime (timestamp) {
-
-}
-
 eventEmitter.on("twitterData",function () {
   app.get("/", function(req,res){
     res.locals.timeline = timeline;
@@ -62,12 +58,6 @@ app.use("/static", express.static(__dirname + "/public"));
 
 app.set("view engine", "jade");
 app.set("views", __dirname + "/views");
-
-
-app.post("/form",function (req,res) {
-  console.log("form submission");
-})
-
 
 app.listen(3000,function(){
   console.log("running app at localhost:3000");
